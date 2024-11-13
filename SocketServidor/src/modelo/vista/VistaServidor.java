@@ -9,7 +9,7 @@ import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import modelo.gestor.ClienteHandler;
+
 import modelo.gestor.GestorServidor;
 
 public class VistaServidor {
@@ -27,21 +27,21 @@ public class VistaServidor {
 	    System.out.println("║      Piedra, Papel o Tijera    ║");
 	    System.out.println("╚════════════════════════════════╝");
 	    try{
+	    	
 	    	ServerSocket serverSocket = new ServerSocket();
 	    	serverSocket.bind(direccion);
-	    	System.out.println("SERVIDOR: Esperando peticion por el puerto: " + PUERTO);
-    		socketAlCliente1 = serverSocket.accept();
-    		System.out.println("Cliente 1 conectado");
-    		socketAlCliente2 = serverSocket.accept();
-    		System.out.println("Cliente 2 conectado");
-    		new Thread(new ClienteHandler(socketAlCliente1, gc)).start();
-    	    new Thread(new ClienteHandler(socketAlCliente2, gc)).start();
-    		System.out.println("SERVIDOR: Petición recibida");
-    		entrada = new InputStreamReader(socketAlCliente1.getInputStream());
-    		entradaCliente2 = new InputStreamReader(socketAlCliente2.getInputStream());
-    		BufferedReader bf = new BufferedReader(entrada);
-    		BufferedReader bf2 = new BufferedReader(entradaCliente2);
 	    	while(true) {
+		    	System.out.println("SERVIDOR: Esperando peticion por el puerto: " + PUERTO);
+	    		socketAlCliente1 = serverSocket.accept();
+	    		System.out.println("Cliente 1 conectado");
+	    		socketAlCliente2 = serverSocket.accept();
+	    		System.out.println("Cliente 2 conectado");
+	    		
+	    		System.out.println("SERVIDOR: Petición recibida");
+	    		entrada = new InputStreamReader(socketAlCliente1.getInputStream());
+	    		entradaCliente2 = new InputStreamReader(socketAlCliente2.getInputStream());
+	    		BufferedReader bf = new BufferedReader(entrada);
+	    		BufferedReader bf2 = new BufferedReader(entradaCliente2);
 	    	
 	    
 	    		String recibido = bf.readLine();

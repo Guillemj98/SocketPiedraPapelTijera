@@ -18,10 +18,6 @@ public class GestorServidor {
 	}
 	
 	
-	
-	
-	
-	
 	public String partida(String stringRecibido) {
 		
 		String resultado = "";
